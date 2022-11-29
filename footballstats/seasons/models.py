@@ -2,7 +2,7 @@ from django.db import models
 
 
 class Season(models.Model):
-    year = models.IntegerField(max_length=4, blank=False, default=1900)
+    year = models.IntegerField(blank=False, default=1900)
     description = models.TextField(max_length=200)
 
     def __str__(self):
