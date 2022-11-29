@@ -1,7 +1,12 @@
 from django.db import models
 
+from seasons.models import Season
+from tournaments.models import Tournament
+
+
 # Match model
 class Matches(models.Model):
+    tournament = models.ForeignKey(Tournament, on_delete=models.SET(1), verbose_name='seasons', blank=False)
     date = models.DateField(blank=False)
     time = models.TimeField(blank=False)
     place = models.CharField(max_length=200, default='City and Stadium')
