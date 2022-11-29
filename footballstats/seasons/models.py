@@ -1,0 +1,13 @@
+from django.db import models
+
+
+class Season(models.Model):
+    year = models.IntegerField(max_length=4, blank=False, default=1900)
+    description = models.TextField(max_length=200)
+
+    def __str__(self):
+        return f'Season {self.year}'
+
+    class Meta:
+        verbose_name = "Season"
+        verbose_name_plural = "Seasons"
