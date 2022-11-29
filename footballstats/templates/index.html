@@ -2,9 +2,22 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Hello World!</title>
+    <title>Seasons</title>
 </head>
 <body>
-<p>Hello, World!</p>
+
+<h1>INDEX PAGE</h1>
+
+<p>Current Season:
+{% for season in current_season %}
+    {{ season.year }}
+{% endfor %}
+</p>
+
+<p> Season History:
+{% for season in season_list %}
+    {{ season.year }}
+{% endfor %}
+</p>
 </body>
 </html>

@@ -1,6 +1,6 @@
 from django.db import models
 
-
+# Seasons model
 class Season(models.Model):
     year = models.IntegerField(blank=False, default=1900)
     description = models.TextField(max_length=200)
