@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Match</title>
+</head>
+<body>
+<p>Match start date and time:
+    {% for match in current_match %}
+    {{ match.date }}
+    {{ match.time }}
+    {% endfor %}
+</p>
+
+<p>Team A:
+    {% for match in current_match %}
+    {{ match.team_a }}
+    {% endfor %}
+</p>
+<p>Team B:
+    {% for match in current_match %}
+    {{ match.team_b }}
+    {% endfor %}
+</p>
+
+</body>
+</html>

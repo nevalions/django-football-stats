@@ -16,9 +16,11 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
+from matches.views import match_index_page
 from seasons.views import seasons_index_page
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('seasons/', seasons_index_page),
+    path('matches/', match_index_page),
 ]
