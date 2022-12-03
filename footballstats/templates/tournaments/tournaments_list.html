@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Tournaments list</title>
+</head>
+<body>
+<p>Current Season: <br>
+{% for tournament in current_season_tournament %}
+    <a href="{{ tournament.get_absolute_url }}">{{ tournament.name }} {{ tournament.season }}</a>
+{% endfor %}
+</p>
+
+<p>Season History: <br>
+{% for tournament in other_years_season_tournaments %}
+    <a href="{{ tournament.get_absolute_url }}">{{ tournament.name }} {{ tournament.season }}</a>
+{% endfor %}
+</body>
+</html>
