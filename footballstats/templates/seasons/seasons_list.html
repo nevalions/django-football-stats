@@ -7,13 +7,13 @@
 <body>
 <p>Current Season:
 {% for season in current_season %}
-    {{ season.year }}
+    <a href="{{ season.get_absolute_url }}">{{ season.year }}</a>
 {% endfor %}
 </p>
 
 <p> Season History:
 {% for season in season_list %}
-    {{ season.year }}
+    <a href="{{ season.get_absolute_url }}">{{ season.year }}</a>
 {% endfor %}
 </p>
 </body>

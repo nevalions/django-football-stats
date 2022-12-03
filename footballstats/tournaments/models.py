@@ -1,4 +1,6 @@
 from django.db import models
+from django.urls import reverse
+
 from seasons.models import Season
 
 
@@ -14,3 +16,9 @@ class Tournament(models.Model):
     class Meta:
         verbose_name = "Tournament"
         verbose_name_plural = "Tournament"
+
+    def get_absolute_url(self):
+        return reverse('tournament_page', kwargs={
+            'tournament_id': self.pk,
+            'name': self.name,
+            'season': self.season})
