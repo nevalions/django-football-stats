@@ -1,25 +1,23 @@
 import datetime
 
 from django.shortcuts import render
-from seasons.models import Season
+from seasons.models import Season, _get_current_season_year, _get_other_seasons_years
 from tournaments.models import Tournament
 
 
 # Main index page from Seasons List
 def index_page(request):
-    current_year = int(datetime.date.today().year)
-    current_season = Season.objects.filter(year=current_year)
-    all_seasons = Season.objects.exclude(year=current_year)
+    current_season = _get_current_season_year()
+    all_seasons = _get_other_seasons_years
 
     return render(request, 'index.html', {"season_list": all_seasons, "current_season": current_season})
 
 
 # Seasons list page
 
-def seasons_list(request):
-    current_year = int(datetime.date.today().year)
-    current_season = Season.objects.filter(year=current_year)
-    all_seasons = Season.objects.exclude(year=current_year)
+def seasons_list_page(request):
+    current_season = _get_current_season_year()
+    all_seasons = _get_other_seasons_years
 
     return render(request, 'seasons/seasons_list.html', {"season_list": all_seasons, "current_season": current_season})
 
