@@ -16,7 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
-from matches.views import match_index_page
+from matches.views import match_page
 from seasons.views import seasons_list, index_page, season_page
 from tournaments.views import tournaments_list_page, tournament_page
 
@@ -27,5 +27,5 @@ urlpatterns = [
     path('season/<str:year>', season_page, name='season_page'),  # seasons page
     path('tournaments/', tournaments_list_page, name='tournaments_list'),  # tournaments list
     path('tournament/<int:tournament_id>/<str:name>/<str:season>', tournament_page, name='tournament_page'),  # tournament page
-    path('matches/<int:match_id>', match_index_page, name='match_page')  # match page
+    path('matches/<int:match_id>', match_page, name='match_page')  # matches page
 ]

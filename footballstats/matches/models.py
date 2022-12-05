@@ -5,7 +5,7 @@ from tournaments.models import Tournament
 
 
 # Match model
-class Matches(models.Model):
+class Match(models.Model):
     tournament = models.ForeignKey(Tournament, on_delete=models.SET(1), verbose_name='seasons', blank=False)
     date = models.DateField(blank=False)
     time = models.TimeField(blank=False)

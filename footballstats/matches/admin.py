@@ -1,4 +1,5 @@
 from django.contrib import admin
-from matches.models import Matches
 
-admin.site.register(Matches)
+from matches.models import Match
+
+admin.site.register(Match)
