@@ -15,7 +15,7 @@ class Season(models.Model):
     class Meta:
         verbose_name = "Season"
         verbose_name_plural = "Seasons"
-        ordering = ['year']
+        ordering = ['-year']
 
 
     def get_absolute_url(self):

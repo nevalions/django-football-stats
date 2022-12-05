@@ -9,10 +9,12 @@
 </p>
 
 <p> Current Season Tournaments:
-{% for tournament in current_season_tournaments %}
-    <a href="{{ tournament.get_absolute_url }}">{{ tournament.name }} {{ tournament.season }}</a>
-{% endfor %}
-
+    {% for tournament in current_season_tournaments %}
+    <br><a href="{{ tournament.get_absolute_url }}">{{ tournament.name }} {{ tournament.season }}</a>
+    {% endfor %}
 </p>
+
+
+
 </body>
 </html>
