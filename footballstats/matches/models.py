@@ -20,7 +20,9 @@ class Match(models.Model):
     class Meta:
         verbose_name = "Match"
         verbose_name_plural = "Matches"
+        ordering = ['tournament']
 
     def get_absolute_url(self):
-        return reverse('match_page', kwargs={'match_id': self.pk})
-
+        return reverse('match_page', kwargs={
+            'match_id': self.pk,
+            'tournament': self.tournament.name})

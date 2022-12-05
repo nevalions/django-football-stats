@@ -14,18 +14,16 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
 
 from matches.views import match_page
-from seasons.views import seasons_list_page, index_page, season_page
+from seasons.views import SeasonList, SeasonDetail, MainPage
 from tournaments.views import tournaments_list_page, tournament_page
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', index_page, name='main'),  # seasons list MAIN INDEX
-    path('seasons/', seasons_list_page, name='seasons_list'),  # seasons list
-    path('seasons/<str:year>', season_page, name='season_page'),  # seasons page
-    path('tournaments/', tournaments_list_page, name='tournaments_list'),  # tournaments list
-    path('tournaments/<int:tournament_id>/<str:name>/<str:season>', tournament_page, name='tournament_page'),  # tournament page
-    path('matches/<int:match_id>', match_page, name='match_page')  # matches page
+    path('', MainPage.as_view(), name='main'),  # seasons list MAIN INDEX
+    path('seasons/', include('seasons.urls')),
+    path('tournaments/', include('tournaments.urls')),
+    path('matches/', include('matches.urls'))
 ]

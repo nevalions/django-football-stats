@@ -15,6 +15,8 @@ class Season(models.Model):
     class Meta:
         verbose_name = "Season"
         verbose_name_plural = "Seasons"
+        ordering = ['year']
+
 
     def get_absolute_url(self):
         return reverse('season_page', kwargs={
@@ -26,4 +28,4 @@ def _get_current_season_year():
 
 
 def _get_other_seasons_years():
-    return Season.objects.exclude(year=int(datetime.date.today().year))
+    return Season.objects.exclude(year=int(datetime.date.today().year)).order_by('-year')
