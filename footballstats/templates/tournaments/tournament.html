@@ -11,6 +11,12 @@
 {{ current_tournament.name }} {{ current_tournament.season }}
 </p>
 
+<p>Current Season Matches:
+    <br>{% for match in current_season_matches %}
+    <br>{{ match.date }} {{ match.time }}
+    <br><a href={{ match.get_absolute_url }}>{{ match.team_a }} vs {{ match.team_b }}</a>
+</p>
+{% endfor %}
 
 </body>
 </html>

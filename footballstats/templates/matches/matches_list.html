@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Matches</title>
+</head>
+<body>
+<p>
+{% for match in current_season_matches %} Current {{ match.tournament }} Matches
+    <p>
+    {{ match.date }} {{ match.time }}
+    <br><a href={{ match.get_absolute_url }}>{{ match.team_a }} vs {{ match.team_b }}</a>
+    </p>
+{% endfor %}
+</p>
+<p>
+
+</p>
+
+<p>
+
+</p>
+
+</body>
+</html>

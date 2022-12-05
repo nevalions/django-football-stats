@@ -8,16 +8,19 @@
 
 <h1>INDEX PAGE</h1>
 
-<p>Current Season:
-{% for season in current_season %}
-    {{ season.year }}
-{% endfor %}
+<body>
+<p>Current Season:</p>
+<p>
+    {% for season in current_season %}
+    <a href="{{ season.get_absolute_url }}">{{ season.year }}</a>
+    {% endfor %}
 </p>
 
-<p> Season History:
-{% for season in season_list %}
-    {{ season.year }}
-{% endfor %}
+<p>Previous Seasons:</p>
+<p>
+    {% for season in season_list %}
+    <a href="{{ season.get_absolute_url }}">{{ season.year }}</a>
+    {% endfor %}
 </p>
 </body>
 </html>

@@ -16,9 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 
-from matches.views import match_page
-from seasons.views import SeasonList, SeasonDetail, MainPage
-from tournaments.views import tournaments_list_page, tournament_page
+from seasons.views import MainPage
 
 urlpatterns = [
     path('admin/', admin.site.urls),

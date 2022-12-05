@@ -17,7 +17,7 @@ class Tournament(models.Model):
     class Meta:
         verbose_name = "Tournament"
         verbose_name_plural = "Tournament"
-        ordering = ['season']
+        ordering = ['-season']
 
     def get_absolute_url(self):
         return reverse('tournament_page', kwargs={
