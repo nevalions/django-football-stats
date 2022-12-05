@@ -1,4 +1,5 @@
 from django.db import models
+from django.db.models import Max, Count
 from django.urls import reverse
 
 from seasons.models import Season
@@ -6,7 +7,7 @@ from seasons.models import Season
 
 # Tournament model
 class Tournament(models.Model):
-    season = models.ForeignKey(Season, on_delete=models.SET(1), verbose_name='seasons', blank=False)
+    season = models.ForeignKey(Season, on_delete=models.SET_NULL, null=True)
     name = models.CharField(max_length=100, blank=False)
     description = models.TextField(max_length=200)
 

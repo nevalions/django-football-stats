@@ -1,3 +1,5 @@
+import datetime
+
 from django.db import models
 from django.urls import reverse
 
@@ -17,3 +19,11 @@ class Season(models.Model):
     def get_absolute_url(self):
         return reverse('season_page', kwargs={
             'year': self.year})
+
+
+def _get_current_season_year():
+    return Season.objects.filter(year=int(datetime.date.today().year))
+
+
+def _get_other_seasons_years():
+    return Season.objects.exclude(year=int(datetime.date.today().year))

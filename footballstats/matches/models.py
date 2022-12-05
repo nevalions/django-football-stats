@@ -6,7 +6,7 @@ from tournaments.models import Tournament
 
 # Match model
 class Match(models.Model):
-    tournament = models.ForeignKey(Tournament, on_delete=models.SET(1), verbose_name='seasons', blank=False)
+    tournament = models.ForeignKey(Tournament, on_delete=models.SET_NULL, null=True)
     date = models.DateField(blank=False)
     time = models.TimeField(blank=False)
     place = models.CharField(max_length=200, default='City and Stadium')
@@ -22,5 +22,5 @@ class Match(models.Model):
         verbose_name_plural = "Matches"
 
     def get_absolute_url(self):
-        return reverse('match_page', kwargs={'match_id': self.pk,})
+        return reverse('match_page', kwargs={'match_id': self.pk})
 
