@@ -2,19 +2,20 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Seasons</title>
+    <title></title>
 </head>
 <body>
-<p>Current Season:
-{% for season in current_season %}
+<p>Current Season:</p>
+<p>
+    {% for season in current_season %}
     <a href="{{ season.get_absolute_url }}">{{ season.year }}</a>
-{% endfor %}
+    {% endfor %}
 </p>
-
-<p> Season History:
-{% for season in season_list %}
+<p>Previous Seasons:</p>
+<p>
+    {% for season in season_list %}
     <a href="{{ season.get_absolute_url }}">{{ season.year }}</a>
-{% endfor %}
+    {% endfor %}
 </p>
 </body>
 </html>
