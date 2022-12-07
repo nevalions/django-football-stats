@@ -10,7 +10,7 @@
 
 <p> Current Season Tournaments:
     {% for tournament in current_season_tournaments %}
-    <br><a href="{{ tournament.get_absolute_url }}">{{ tournament.name }} {{ tournament.season }}</a>
+    <br><a href="{{ tournament.get_absolute_url }}">{{ tournament.name }} {{ tournament.season.year }}</a>
     {% endfor %}
 </p>
 

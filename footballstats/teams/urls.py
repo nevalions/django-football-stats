@@ -4,6 +4,6 @@ from teams.views import TeamList, TeamDetail
 
 urlpatterns = [
     path('', TeamList.as_view(), name='team_list'),  # teams list
-    path('<int:team_id>/<str:name>/<str:tournament>',
+    path('<int:team_id>/<str:name>/<str:tournament>/<int:tournament_id>',
          TeamDetail.as_view(), name='team_page')  # team page
 ]

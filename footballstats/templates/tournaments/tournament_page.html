@@ -2,10 +2,10 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Tournament page</title>
+    <title></title>
 </head>
 <body>
-<p>Tournament page</p>
+<p></p>
 
 <p>
 {{ current_tournament.name }} {{ current_tournament.season }}
@@ -14,7 +14,7 @@
 <p>Current Tournament Matches:
     <br>{% for match in current_tournament_matches %}
     <br>{{ match.date }} {{ match.time }}
-    <br><a href={{ match.get_absolute_url }}>{{ match.team_a }} vs {{ match.team_b }}</a>
+    <br><a href={{ match.get_absolute_url }}>{{ match.team_a.name }} vs {{ match.team_b.name }}</a>
 </p>
 {% endfor %}
 

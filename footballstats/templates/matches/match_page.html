@@ -10,7 +10,8 @@
 <p>Match start date and time: {{ current_match.date }} {{ current_match.time }}
 </p>
 
-<p>{{ current_match.team_a }} vs. {{ current_match.team_b }}
+<p><a href={{ current_match.team_a.get_absolute_url }}>{{ current_match.team_a.name }}</a> vs.
+    <a href={{ current_match.team_b.get_absolute_url }}>{{ current_match.team_b.name }}</a>
 </p>
 
 </body>
