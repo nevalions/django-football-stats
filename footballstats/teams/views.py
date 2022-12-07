@@ -1,9 +1,10 @@
 from django.db.models import Q
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.views import View
 
 from matches.models import Match
 from seasons.models import _get_current_season_year, _get_other_seasons_years
+from teams.forms import AddTeamForm
 from teams.models import Team
 from tournaments.models import Tournament
 
@@ -40,3 +41,23 @@ class TeamDetail(View):
                           'selected_team': selected_team,
                           'team_current_tournament_matches': team_current_tournament_matches,
                       })
+
+
+def team_add_view(request):
+    error = ''
+    template_name = 'teams/team_add.html'
+
+    if request.method == 'POST':
+        form = AddTeamForm(request.POST)
+        if form.is_valid():
+            team, created = Team.objects.get_or_create(**form.cleaned_data)
+            return redirect('teams_list')
+        else:
+            error = 'Add Error'
+    else:
+        form = AddTeamForm()
+
+    return render(request, template_name, {
+        'form': form,
+        'error: error': error
+    })

@@ -19,7 +19,9 @@ class Season(models.Model):
 
     def get_absolute_url(self):
         return reverse('season_page', kwargs={
-            'year': self.year})
+            'year': self.year,
+            'season_id': self.pk
+        })
 
 
 def _get_current_season_year():

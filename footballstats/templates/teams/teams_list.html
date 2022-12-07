@@ -15,10 +15,10 @@
 <p>
     {% for team in current_season_teams %}
     <p>
-    <a href={{ team.get_absolute_url }}>{{ team.name }} {{ team.tournament }}</a>
+    <a href={{ team.get_absolute_url }}>{{ team.name }}</a> - {{ team.tournament }}
     </p>
     {% endfor %}
 </p>
-
+<p><a href="add/">Add New Team</p>
 </body>
 </html>
