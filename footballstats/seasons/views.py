@@ -20,11 +20,11 @@ class MainPage(View):
 class SeasonList(View):
     def get(self, request):
         current_season = _get_current_season_year()
-        season_list = _get_other_seasons_years
+        other_seasons_list = _get_other_seasons_years
 
         return render(request, 'seasons/season_list.html',
-                      {"season_list": season_list,
-                       "current_season": current_season,
+                      {"current_season": current_season,
+                       "other_seasons_list": other_seasons_list,
                        })
 
 

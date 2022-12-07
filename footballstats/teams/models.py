@@ -12,7 +12,7 @@ class Team(models.Model):
     description = models.TextField(max_length=200, blank=True)
 
     def __str__(self):
-        return f'{self.name}'
+        return f'{self.name} - {self.tournament.name} {self.tournament.season.year}'
 
     class Meta:
         verbose_name = "Team"
@@ -23,5 +23,6 @@ class Team(models.Model):
         return reverse('team_page', kwargs={
             'team_id': self.pk,
             'name': self.name,
-            'tournament': self.tournament
+            'tournament': self.tournament,
+            'tournament_id': self.tournament.pk
         })
