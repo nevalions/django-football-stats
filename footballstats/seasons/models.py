@@ -4,7 +4,7 @@ from django.db import models
 from django.urls import reverse
 
 
-# Seasons model
+# Season model
 class Season(models.Model):
     year = models.IntegerField(blank=False, default=1900)
     description = models.TextField(max_length=200)
@@ -16,7 +16,6 @@ class Season(models.Model):
         verbose_name = "Season"
         verbose_name_plural = "Seasons"
         ordering = ['-year']
-
 
     def get_absolute_url(self):
         return reverse('season_page', kwargs={

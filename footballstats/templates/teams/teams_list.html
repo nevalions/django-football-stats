@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Teams</title>
+</head>
+<body>
+<p>
+    {% for team in current_season_teams %}
+
+    {% endfor %}
+</p>
+<p>
+
+</p>
+
+<p>
+    {% for team in current_season_teams %}
+    <p>
+    <a href={{ team.get_absolute_url }}>{{ team.name }} {{ team.tournament }}</a>
+    </p>
+    {% endfor %}
+</p>
+
+</body>
+</html>

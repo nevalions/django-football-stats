@@ -3,6 +3,7 @@ from django.views import View
 
 from matches.models import Match
 from seasons.models import _get_current_season_year, _get_other_seasons_years
+from teams.models import Team
 from tournaments.models import Tournament
 
 
@@ -31,8 +32,10 @@ class TournamentDetail(View):
         # current_tournament_name = name
         # current_season = season
         current_tournament = Tournament.objects.get(id=tournament_id)
-        current_season_matches = Match.objects.filter(tournament=current_tournament)
-        return render(request, 'tournaments/tournament.html',
-                      {"current_tournament": current_tournament,
-                       'current_season_matches': current_season_matches
+        current_tournament_matches = Match.objects.filter(tournament=current_tournament)
+        current_tournament_teams = Team.objects.filter(tournament=current_tournament)
+        return render(request, 'tournaments/tournament_page.html',
+                      {'current_tournament': current_tournament,
+                       'current_tournament_matches': current_tournament_matches,
+                       'current_tournament_teams': current_tournament_teams
                        })
