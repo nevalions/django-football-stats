@@ -3,26 +3,19 @@ from django.shortcuts import render, redirect
 from django.views import View
 
 from matches.models import Match
-from seasons.models import _get_current_season_year, _get_other_seasons_years
 from teams.forms import AddTeamForm
-from teams.models import Team
-from tournaments.models import Tournament
+from teams.models import Team, _get_current_season_teams, _get_other_seasons_teams
 
 
 # Teams list index page
 class TeamList(View):
     def get(self, request):
-        current_season_tournament = Tournament.objects.filter(season__in=_get_current_season_year())
-        other_years_season_tournaments = Tournament.objects.filter(season__in=_get_other_seasons_years())
 
-        current_season_teams = Team.objects.filter(tournament__in=current_season_tournament)
-        other_seasons_teams = Team.objects.filter(tournament__in=other_years_season_tournaments)
         return render(request, 'teams/teams_list.html',
-                      {'current_season_tournament': current_season_tournament,
-                       'other_years_season_tournaments': other_years_season_tournaments,
-                       'current_season_teams': current_season_teams,
-                       'other_seasons_teams': other_seasons_teams,
-                       })
+                      {
+                          'current_season_teams': _get_current_season_teams(),
+                          'other_seasons_teams': _get_other_seasons_teams(),
+                      })
 
 
 # Teams list index page

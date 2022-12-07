@@ -2,7 +2,7 @@ from django.db import models
 from django.urls import reverse
 
 from teams.models import Team
-from tournaments.models import Tournament
+from tournaments.models import Tournament, _get_current_season_tournaments, _get_other_years_tournaments
 
 
 # Match model
@@ -30,3 +30,11 @@ class Match(models.Model):
         return reverse('match_page', kwargs={
             'match_id': self.pk,
             'tournament': self.tournament.name})
+
+
+def _get_current_tournament_matches():
+    return Match.objects.filter(tournament__in=_get_current_season_tournaments())
+
+
+def _get_other_tournaments_matches():
+    return Match.objects.filter(tournament__in=_get_other_years_tournaments())

@@ -8,18 +8,18 @@
 <p></p>
 
 <p>
-{{ current_tournament.name }} {{ current_tournament.season }}
+{{ selected_tournament.name }} {{ selected_tournament.season }}
 </p>
 
-<p>Current Tournament Matches:
-    <br>{% for match in current_tournament_matches %}
+<p>Selected Tournament Matches:
+    <br>{% for match in selected_tournament_matches %}
     <br>{{ match.date }} {{ match.time }}
     <br><a href={{ match.get_absolute_url }}>{{ match.team_a.name }} vs {{ match.team_b.name }}</a>
 </p>
 {% endfor %}
 
-<p>Current Tournament Teams:
-    {% for team in current_tournament_teams %}
+<p>Selected Tournament Teams:
+    {% for team in selected_tournament_teams %}
     <br><a href={{ team.get_absolute_url }}>{{ team.name }}</a>
     {% endfor %}
 </p>

@@ -5,11 +5,11 @@
     <title></title>
 </head>
 <body>
-<p>Current Season: {{ current_season.year }}
+<p>Season: {{ selected_season.year }}
 </p>
 
-<p> Current Season Tournaments:
-    {% for tournament in current_season_tournaments %}
+<p>Season's Tournaments:
+    {% for tournament in selected_season_tournaments %}
     <br><a href="{{ tournament.get_absolute_url }}">{{ tournament.name }} {{ tournament.season.year }}</a>
     {% endfor %}
 </p>

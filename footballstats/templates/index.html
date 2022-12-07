@@ -18,7 +18,7 @@
 
 <p>Previous Seasons:</p>
 <p>
-    {% for season in season_list %}
+    {% for season in other_seasons_list %}
     <a href="{{ season.get_absolute_url }}">{{ season.year }}</a>
     {% endfor %}
 </p>

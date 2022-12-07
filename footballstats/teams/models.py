@@ -1,7 +1,8 @@
 from django.db import models
 from django.urls import reverse
 
-from tournaments.models import Tournament
+from seasons.models import _get_current_season
+from tournaments.models import Tournament, _get_other_years_tournaments, _get_current_season_tournaments
 
 
 # Team model
@@ -26,3 +27,12 @@ class Team(models.Model):
             'tournament': self.tournament,
             'tournament_id': self.tournament.pk
         })
+
+
+def _get_current_season_teams():
+    return Team.objects.filter(tournament__in=_get_current_season_tournaments())
+
+
+def _get_other_seasons_teams():
+    return Team.objects.filter(tournament__in=_get_other_years_tournaments())
+
