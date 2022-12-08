@@ -17,8 +17,6 @@ class Match(models.Model):
     field_length = models.IntegerField(default=90)
     team_a = models.ForeignKey(Team, on_delete=models.SET_NULL, null=True, related_name='team_a')
     team_b = models.ForeignKey(Team, on_delete=models.SET_NULL, null=True, related_name='team_b')
-    score_a = models.IntegerField(default=0)
-    score_b = models.IntegerField(default=0)
 
     def __str__(self):
         return f'{self.tournament.name} {self.season.year} ' \
@@ -35,6 +33,11 @@ class Match(models.Model):
             'tournament': self.tournament.name,
             'season': self.season.year
         })
+
+    # def save(self, *args, **kwargs):
+    #     self.score_a = StatsMatchOnline.score_team_a
+    #     self.score_b = StatsMatchOnline.score_team_b
+    #     super(Match, self).save(*args, **kwargs)
 
 
 def _get_current_season_matches():

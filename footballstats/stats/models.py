@@ -12,7 +12,8 @@ class StatsMatchOnline(models.Model):
     score_team_b = models.IntegerField(default=0)
 
     def __str__(self):
-        return f'{self.match.pk} {self.match.season.year} {self.match.team_a}-{self.match.team_b}'
+        return f'{self.match.pk} {self.match.season.year} {self.match.tournament.name} ' \
+               f'{self.match.team_a.name}-{self.match.team_b.name}'
 
     class Meta:
         verbose_name = "Match Stats Online"

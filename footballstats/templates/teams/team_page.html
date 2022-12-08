@@ -17,18 +17,30 @@
 
 </p>
 <p><i>Current Team Matches </i>
-<br>{% for match in team_current_tournament_matches %} {{ match.tournament }}
+<br>{% for stats in current_matches_stats %} {{ stats.match.tournament.name }}
     <p>
-    {{ match.date }} {{ match.time }}
-    <br><a href={{ match.get_absolute_url }}>{{ match.team_a.name }} vs {{ match.team_b.name }}</a>
+    {{ stats.match.date }} {{ stats.match.time }}
+    <br><a href={{ stats.match.get_absolute_url }}>
+    {{ stats.match.team_a.name }} vs {{ stats.match.team_b.name }}</a>
+    <br>
+    {{ stats.score_team_a }} vs {{ stats.score_team_b }}
     </p>
 {% endfor %}
 <hr>
 </p>
 
-<p>
+<p><i>Current Season no Stats</i>
+<br>{% for no_stats in matches_no_stats %} {{ no_stats.tournament.name }}
+    <p>
+    {{ no_stats.date }} {{ no_stats.time }}
+    <br><a href={{ no_stats.get_absolute_url }}>
+    {{ no_stats.team_a.name }} vs {{ no_stats.team_b.name }}</a>
 
 </p>
+{% endfor %}
+<hr>
+</p>
+
 
 </body>
 </html>

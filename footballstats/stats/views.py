@@ -113,35 +113,3 @@ def stats_online_match_edit(request, stats_match_online_id):
                       'form': form,
                       'selected_online_stats_match': selected_online_stats_match
                   })
-
-#
-# class StatsMatchOnlineEditView(View):
-#
-#     def get(self, request, stats_match_online_id):
-#         template_name = 'stats/stats_match_online_edit_page.html'
-#
-#         print(selected_online_stats_match)
-#
-#         form = EditStatsMatchOnline()
-#
-#         return render(request, template_name,
-#                       {
-#                           'form': form,
-#                           'selected_online_stats_match': selected_online_stats_match
-#                       })
-#
-#     def post(self, request, stats_match_online_id):
-#         error = ''
-#         selected_online_stats_match = StatsMatchOnline.objects.filter(pk=stats_match_online_id)
-#
-#         if request.method == 'POST':
-#
-#             if form.is_valid():
-#                 form.save()
-#                 return redirect('stats_match_online_list')
-#             else:
-#                 error = 'Add Error'
-#         else:
-#             form = EditStatsMatchOnline()
-#
-#         return render(request)
