@@ -13,7 +13,7 @@ class Team(models.Model):
     description = models.TextField(max_length=200, blank=True)
 
     def __str__(self):
-        return f'{self.name} - {self.tournament.name} {self.tournament.season.year}'
+        return f'{self.name} - {self.tournament.name}'
 
     class Meta:
         verbose_name = "Team"

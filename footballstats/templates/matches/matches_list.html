@@ -15,7 +15,7 @@
 <hr>
 </p>
 <p><i>Past Seasons</i>
-<br>{% for match in other_tournaments_matches %} {{ match.tournament }}
+<br>{% for match in other_seasons_matches %} {{ match.tournament }}
     <p>
     {{ match.date }} {{ match.time }}
     <br><a href={{ match.get_absolute_url }}>{{ match.team_a.name }} vs {{ match.team_b.name }}</a>

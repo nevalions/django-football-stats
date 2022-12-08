@@ -9,13 +9,15 @@
     <p>
     {{ selected_team.name }}
     </p>
+
     <p>
     {{ selected_team.tournament }}
     </p>
 
+
 </p>
-<p><i>Current Season Team Matches</i>
-<br>{% for match in team_selected_tournament_matches %} {{ match.tournament }}
+<p><i>Current Team Matches </i>
+<br>{% for match in team_current_tournament_matches %} {{ match.tournament }}
     <p>
     {{ match.date }} {{ match.time }}
     <br><a href={{ match.get_absolute_url }}>{{ match.team_a.name }} vs {{ match.team_b.name }}</a>

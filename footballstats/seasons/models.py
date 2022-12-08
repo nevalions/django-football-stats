@@ -7,7 +7,7 @@ from django.urls import reverse
 # Season model
 class Season(models.Model):
     year = models.IntegerField(blank=False, default=1900)
-    current_season = models.BooleanField(default=False)
+    current_season = models.BooleanField(verbose_name='Current year', default=False)
 
     def __str__(self):
         return f'Season {self.year}'

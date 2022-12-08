@@ -19,7 +19,7 @@ class MainPage(View):
 # Seasons list page
 class SeasonList(View):
     def get(self, request):
-        return render(request, 'seasons/season_list.html',
+        return render(request, 'seasons/seasons_list.html',
                       {
                           'current_season': _get_current_season(),
                           'other_seasons_list': _get_other_seasons(),
