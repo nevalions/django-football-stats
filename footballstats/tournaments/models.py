@@ -7,23 +7,23 @@ from seasons.models import Season, _get_current_season, _get_other_seasons
 
 # Tournament model
 class Tournament(models.Model):
-    season = models.ForeignKey(Season, on_delete=models.SET_NULL, null=True)
+    season = models.ManyToManyField(Season)
     name = models.CharField(max_length=100, blank=False)
     description = models.TextField(max_length=200, blank=True)
 
     def __str__(self):
-        return f'{self.name} {self.season}'
+        return f'{self.name}'
 
     class Meta:
         verbose_name = "Tournament"
         verbose_name_plural = "Tournament"
-        ordering = ['-season']
+        ordering = ['-name']
 
     def get_absolute_url(self):
         return reverse('tournament_page', kwargs={
             'tournament_id': self.pk,
             'name': self.name,
-            'season': self.season})
+})
 
 
 def _get_current_season_tournaments():

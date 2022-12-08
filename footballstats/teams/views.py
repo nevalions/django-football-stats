@@ -3,6 +3,7 @@ from django.shortcuts import render, redirect
 from django.views import View
 
 from matches.models import Match
+from seasons.models import _get_current_season, _get_other_seasons
 from teams.forms import AddTeamForm
 from teams.models import Team, _get_current_season_teams, _get_other_seasons_teams
 
@@ -10,11 +11,17 @@ from teams.models import Team, _get_current_season_teams, _get_other_seasons_tea
 # Teams list index page
 class TeamList(View):
     def get(self, request):
-
+        current_season = _get_current_season()
+        current_season_teams = Team.objects.filter(tournament__season__in=current_season)
+        other_seasons = _get_other_seasons()
+        other_seasons_teams = Team.objects.filter(tournament__season__in=current_season)
+        print(current_season_teams)
         return render(request, 'teams/teams_list.html',
                       {
-                          'current_season_teams': _get_current_season_teams(),
-                          'other_seasons_teams': _get_other_seasons_teams(),
+                          'current_season_teams': current_season_teams,
+                          'other_seasons_teams': other_seasons_teams,
+                          'current_season': current_season,
+                          'other_seasons': other_seasons
                       })
 
 
@@ -23,16 +30,14 @@ class TeamDetail(View):
     def get(self, request, team_id, name, tournament, tournament_id):
         selected_team = Team.objects.get(id=team_id)
         team_name = name
-        team_tournament = tournament
         team_current_tournament_matches = Match.objects.filter(
-            Q(tournament=tournament_id) & Q(team_a=team_id) | Q(team_b=team_id)
-        )
-        print(team_current_tournament_matches)
+            Q(tournament=tournament_id) & Q(team_a=team_id) | Q(team_b=team_id))
 
         return render(request, 'teams/team_page.html',
                       {
                           'selected_team': selected_team,
                           'team_current_tournament_matches': team_current_tournament_matches,
+                          'current_season': _get_current_season()
                       })
 
 

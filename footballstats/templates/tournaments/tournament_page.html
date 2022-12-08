@@ -8,7 +8,7 @@
 <p></p>
 
 <p>
-{{ selected_tournament.name }} {{ selected_tournament.season }}
+{{ selected_tournament.name }} {% for season in current_season %} {{ season.year }} {% endfor %}
 </p>
 
 <p>Selected Tournament Matches:
@@ -23,6 +23,9 @@
     <br><a href={{ team.get_absolute_url }}>{{ team.name }}</a>
     {% endfor %}
 </p>
-
+<p>
+    Past Seasons {% for season in other_seasons %} <a href={{ season.get_absolute_url }}> {{ season.year }}
+</a> {% endfor %}
+</p>
 </body>
 </html>

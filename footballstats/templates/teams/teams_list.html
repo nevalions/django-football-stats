@@ -5,7 +5,7 @@
     <title>Teams</title>
 </head>
 <body>
-<p>
+<p> Season {% for season in current_season %} {{ season.year }} {% endfor %} Teams:
     {% for team in current_season_teams %}
     <p>
     <a href={{ team.get_absolute_url }}>{{ team.name }}</a> - {{ team.tournament }}
@@ -13,10 +13,10 @@
     {% endfor %}
 <hr>
 </p>
-<p>
-    {% for team in other_seasons_teams %}
+<p> Other Seasons
+    {% for season in other_seasons %}
     <p>
-    <a href={{ team.get_absolute_url }}>{{ team.name }}</a> - {{ team.tournament }}
+    <a href={{ season.get_absolute_url }}>{{ season.year }}</a>
     </p>
     {% endfor %}
 <hr>
