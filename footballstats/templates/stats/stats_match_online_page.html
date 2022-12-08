@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ONLINE STATS</title>
+</head>
+<body>
+<p align="center">Match {% for m in selected_online_stats_match %} {{ m.match.team_a.name }} - {{ m.match.team_b.name }}
+    Online Stats:
+    <br>{{ m.score_team_a }} : {{ m.score_team_b }}
+
+</p>{% endfor %}
+
+
+</body>
+</html>
