@@ -4,6 +4,7 @@ from django.views import View
 
 from matches.models import Match
 from seasons.models import _get_current_season, _get_other_seasons
+from stats.models import StatsMatchOnline
 from teams.forms import AddTeamForm
 from teams.models import Team, _get_current_season_teams, _get_other_seasons_teams
 
@@ -33,11 +34,18 @@ class TeamDetail(View):
         team_current_tournament_matches = Match.objects.filter(
             Q(tournament=tournament_id) & Q(team_a=team_id) | Q(team_b=team_id))
 
+        current_matches_stats = StatsMatchOnline.objects.filter(match__id__in=team_current_tournament_matches)
+
+        # ???
+        matches_no_stats = team_current_tournament_matches.exclude(id__in=current_matches_stats)
+
         return render(request, 'teams/team_page.html',
                       {
                           'selected_team': selected_team,
                           'team_current_tournament_matches': team_current_tournament_matches,
-                          'current_season': _get_current_season()
+                          'current_season': _get_current_season(),
+                          'current_matches_stats': current_matches_stats,
+                          'matches_no_stats': matches_no_stats,
                       })
 
 
